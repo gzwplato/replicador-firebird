@@ -1,0 +1,18 @@
+  //Seguindo o exemplo da função:
+  function myRight(Str: PChar; var Count: integer): PChar; cdecl; export;
+  begin
+     if not Assigned(Str) then
+     	Result := Nil
+     else
+     begin
+         Result := Str;
+         StrPCopy(Str, Copy(Str, Length(Str) - Count + 1, Count));
+     end;
+  end;
+
+  --Seguindo o exemplo da declaração:
+  DECLARE EXTERNAL FUNCTION SRIGHT
+       CSTRING(254) NULL,
+       INTEGER
+  RETURNS CSTRING(254)
+  ENTRY_POINT 'myRight' MODULE_NAME 'myudf'
